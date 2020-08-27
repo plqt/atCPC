@@ -3,10 +3,18 @@ using namespace std;
 #define rep(i,n) for(int i=0;i<(int)(n);i++)
 
 int main(){
-    int N;
-    cin >> N;
-    int L[N];
-    cin >> L[N];
-    if(N<3) cout << '0' << endl;
-    if(N==3&&(L[0]==L[1]||L[0]==L[2]||L[1]==L[2])) cout << '0' << endl;
+    int N; cin >> N;
+    vector<int> L(N); 
+    rep(i,N) cin >> L[i];
+    sort(L.begin(),L.end());
+    int c=0;
+    rep(i,N){
+        rep(j,i){
+            rep(k,j){
+                if(L[i]!=L[j] and L[j]!=L[k] and L[j]+L[k]>L[i])
+                c++;
+                }
+            }
+        }
+    cout << c << endl;
 }
